@@ -1,2 +1,2 @@
 Test Successfull!
-On branch PERSONAL
+From Branch PERSONAL & PUBLIC
