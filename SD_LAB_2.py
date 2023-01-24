@@ -17,3 +17,8 @@ for n in arr:
     print("\t",n,end=" ")
 print("")
 print("<-----For Loop part END----->")
+print("<-----Taking Input From Console----->")
+x=input('Enter Any Junk : ')
+print("<-----Printing X----->")#any datatype
+print("             "+x)
+print("<-----X Printed Successfully----->")
