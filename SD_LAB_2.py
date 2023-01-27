@@ -22,3 +22,4 @@ x=input('Enter Any Junk : ')
 print("<-----Printing X----->")#any datatype
 print("             "+x)
 print("<-----X Printed Successfully----->")
+#######PERSONAL########
