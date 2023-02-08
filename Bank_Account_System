@@ -1,0 +1,58 @@
+class Account:
+    def __init__(self, name, account_number, account_type):
+        self.name = name
+        self.account_number = account_number
+        self.account_type = account_type
+        self.balance = 0
+
+    def deposit(self, amount):
+        self.balance += amount
+
+    def display_balance(self):
+        print("\t\t\tBalance:", self.balance)
+    def withdraw(self, amount):
+        self.balance -= amount
+
+class CurAcct(Account):
+    def __init__(self, name, account_number, account_type, minimum_balance, service_charge):
+        super().__init__(name, account_number, account_type)
+        self.minimum_balance = minimum_balance
+        self.service_charge = service_charge
+
+    def check_minimum_balance(self):
+        if self.balance < self.minimum_balance:
+            self.balance -= self.service_charge
+            print(f"\t\tService charge of {self.service_charge} applied")
+
+class SavAcct(Account):
+    def __init__(self, name, account_number, account_type, interest_rate):
+        super().__init__(name, account_number, account_type)
+        self.interest_rate = interest_rate
+
+    def compute_interest(self):
+        interest = self.balance * self.interest_rate
+        self.deposit(interest)
+
+customers = []
+while True:
+    name = input("Enter Name: ")
+    if name == "exit":
+        break
+    account_number = int(input("Enter Account Number: "))
+    account_type = input("Enter Account Type (current or savings): ")
+    if account_type == "current":
+        minimum_balance = int(input("Enter Minimum Balance: "))
+        service_charge = int(input("Enter Service Charge: "))
+        customers.append(CurAcct(name, account_number, account_type, minimum_balance, service_charge))
+    elif account_type == "savings":
+        interest_rate = float(input("Enter Interest Rate: "))
+        customers.append(SavAcct(name, account_number, account_type, interest_rate))
+    deposit_amount = int(input("Enter Amount to Deposit: "))
+    customers[-1].deposit(deposit_amount)
+    withdraw_amount = int(input("Enter Amount to Withdraw: "))
+    customers[-1].withdraw(withdraw_amount)
+    if account_type == "current":
+        customers[-1].check_minimum_balance()
+    customers[-1].display_balance()
+
+
